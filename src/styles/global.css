@@ -1,0 +1,130 @@
+:root {
+	--primary-color: #212121; /* 60% - Dark gray/almost black */
+	--secondary-color: #FFFFFF; /* 30% - White */
+	--accent-color: #755AFB; /* 10% - Purple */
+	--border-color: hsl(0, 0%, 18%);
+}
+
+body {
+	font-family: monospace;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+	width: 100vw;
+	line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+	font-family: "JetBrains Mono", monospace;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+section {
+	border-top: 2px solid var(--border-color);
+}
+
+header {
+	border-bottom: 4px solid var(--accent-color);
+}
+
+.lr {
+	max-width: 1200px;
+	border-left: 2px solid var(--border-color);
+	border-right: 2px solid var(--border-color);
+	margin: 0 auto;
+}
+.vertical-text {
+	writing-mode: vertical-lr; /* or vertical-rl */
+	text-orientation: mixed;
+	height: 200px; /* Set desired height */
+	text-align: right;
+}
+
+
+
+header {
+	margin-bottom: 3rem;
+}
+
+h1 {
+	font-size: 3rem;
+	letter-spacing: 2px;
+}
+
+h2 {
+	font-size: 2.5rem;
+	margin: 2rem 0 1rem;
+	border-left: 8px solid var(--accent-color);
+	padding-left: 1rem;
+}
+
+.year-section {
+	margin-bottom: 4rem;
+}
+
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 2rem;
+	margin-top: 1.5rem;
+}
+
+.project-card {
+	background-color: var(--primary-color);
+	border: 2px solid var(--secondary-color);
+	padding: 1.5rem;
+	transition: transform 0.2s;
+}
+
+.project-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+	color: var(--accent-color);
+}
+
+.project-meta {
+	margin-top: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.tech-tag {
+	background-color: var(--accent-color);
+	color: var(--secondary-color);
+	padding: 0.25rem 0.5rem;
+	font-size: 0.8rem;
+	font-weight: bold;
+}
+
+footer {
+	margin-top: 4rem;
+	padding-top: 1rem;
+	border-top: 4px solid var(--accent-color);
+	text-align: center;
+	font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+	body {
+		padding: 1rem;
+	}
+
+	.projects-grid {
+		grid-template-columns: 1fr;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+}
