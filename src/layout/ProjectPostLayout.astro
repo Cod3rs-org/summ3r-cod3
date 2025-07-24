@@ -1,25 +1,25 @@
 ---
-const { frontmatter } = Astro.props;
+const {frontmatter} = Astro.props;
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import '../styles/global.css';
-import { Image } from 'astro:assets';
+import {Image} from 'astro:assets';
 
 const pageTitle = "Project";
 
 // Format date for display
 const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', {month: 'long', year: 'numeric'});
 };
 
 // Default project stats
 const defaultStats = [
-  { label: "Started", value: formatDate(frontmatter.pubDate) },
-  { label: "Team Size", value: frontmatter.teamSize || '1 developer' },
-  { label: "Status", value: frontmatter.status || 'Active Development' },
-  { label: "Last Update", value: frontmatter.lastUpdate ? formatDate(frontmatter.lastUpdate) : formatDate(new Date()) }
+    {label: "Started", value: formatDate(frontmatter.pubDate)},
+    {label: "Team Size", value: frontmatter.teamSize || '1 developer'},
+    {label: "Status", value: frontmatter.status || 'Active Development'},
+    {label: "Last Update", value: frontmatter.lastUpdate ? formatDate(frontmatter.lastUpdate) : formatDate(new Date())}
 ];
 
 // Use custom project stats if provided, otherwise use defaults
@@ -31,16 +31,51 @@ const showProjectStats = frontmatter.hideProjectStats !== true;
 
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
     <title>Summ3r Cod3 - {pageTitle}</title>
 </head>
 <body>
 
 <div style="min-height: 50vh" class="bg-grid">
-
+    {frontmatter.gallery && frontmatter.gallery.length > 0 && (
+        <div class="container py-4 position-relative" style="height: 50vh">
+            <div id="projectGallery" class="carousel slide h-100" data-bs-ride="false" data-bs-interval="false">
+                <div class="carousel-indicators">
+                    {frontmatter.gallery.map((img, index) => (
+                            <button type="button" data-bs-target="#projectGallery" data-bs-slide-to={index}
+                                    class={index === 0 ? "active" : ""}
+                                    aria-current={index === 0 ? "true" : "false"}
+                                    aria-label={`Slide ${index + 1}`}></button>
+                    ))}
+                </div>
+                <div class="carousel-inner">
+                    {frontmatter.gallery.map((img, index) => (
+                            <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+                                <img src={img.url} class="d-block img-style gallery-img"
+                                     alt={img.alt || "Project image"}/>
+                            </div>
+                    ))}
+                </div>
+                {frontmatter.gallery.length > 1 && (
+                        <>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#projectGallery"
+                                    data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#projectGallery"
+                                    data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </>
+                )}
+            </div>
+        </div>
+    )}
 </div>
 <header>
     <section>
@@ -48,7 +83,8 @@ const showProjectStats = frontmatter.hideProjectStats !== true;
             <div class="px-2 py-3 d-flex flex-row gap-3">
                 <div class="col">
                     <h1>{frontmatter.title}</h1>
-                    <p>Written by <a class="text-decoration-none" style="color: var(--accent-color)" href={frontmatter.github_user}>{frontmatter.author}</a></p>
+                    <p>Written by <a class="text-decoration-none" style="color: var(--accent-color)"
+                                     href={frontmatter.github_user}>{frontmatter.author}</a></p>
                 </div>
                 <div class="col-auto pe-3 d-flex justify-content-end align-items-center">
                     <a class="text-decoration-none text-white" href={frontmatter.repository_link}>
@@ -59,15 +95,15 @@ const showProjectStats = frontmatter.hideProjectStats !== true;
 
             <section class="row m-0">
                 {showProjectStats && (
-                    <div class="col-md-4 border-system be py-3 px-2">
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                {projectStats.map(stat => (
-                                        <li><strong set:html={stat.label} />: {stat.value}</li>
-                                ))}
-                            </ul>
+                        <div class="col-md-4 border-system be py-3 px-2">
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    {projectStats.map(stat => (
+                                            <li><strong set:html={stat.label}/>: {stat.value}</li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
                 )}
                 <div class={`col-md-${showProjectStats ? '8' : '12'} d-flex align-items-center`}>
                     <p class="mb-0">{frontmatter.description}</p>
@@ -77,7 +113,7 @@ const showProjectStats = frontmatter.hideProjectStats !== true;
     </section>
 </header>
 
-<slot />
+<slot/>
 
 <section>
     <div class="lr px-1 py-3">
@@ -101,10 +137,21 @@ const showProjectStats = frontmatter.hideProjectStats !== true;
     <p>&copy; 2025 Summ3r Cod3 | Brutalist Web Design</p>
 </footer>
 
+
 <!-- Bootstrap JavaScript Bundle with Popper -->
 <script>
     // Astro will bundle and process this automatically
     import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+
+    // Initialize carousel
+    document.addEventListener('DOMContentLoaded', () => {
+        const projectGallery = document.getElementById('projectGallery');
+        if (projectGallery) {
+            new bootstrap.Carousel(projectGallery, {
+                interval: false
+            });
+        }
+    });
 </script>
 </body>
 </html>

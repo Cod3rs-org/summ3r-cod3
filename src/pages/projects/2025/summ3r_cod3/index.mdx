@@ -15,10 +15,13 @@ projectStats: [
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'
+gallery: [
+    { url: './summ3r_cod3/img.png', alt: 'Screenshot of Summ3r Cod3 website' },
+    { url: './summ3r_cod3/img.png', alt: 'Screenshot of Summ3r Cod3 website' },
+]
 ---
 
 import {Image} from 'astro:assets';
-import myImage from './img.png';
 
 <section>
     <div className={"lr p-3"}>
@@ -45,7 +48,7 @@ import myImage from './img.png';
             </div>
         </div>
         <div className="col-sm bg-grid py-4">
-            <Image src={myImage} class="img-fluid img-style" alt="Your image description"/>
+            <img src="./summ3r_cod3/img.png" class="img-fluid img-style" alt="Your image description"/>
         </div>
     </section>
 </section>

@@ -23,6 +23,64 @@ body {
 	transition: box-shadow 0.3s ease;
 }
 
+/* Gallery styles */
+.gallery-img {
+	max-height: 300px;
+	width: auto;
+	object-fit: contain;
+	margin: 0 auto;
+	transition: transform 0.3s ease;
+}
+
+.carousel-caption {
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 5px;
+	padding: 10px;
+	max-width: 80%;
+	margin: 0 auto;
+	bottom: 20px;
+}
+
+/* Fixed positioning for carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.8 !important;
+}
+
+.carousel-control-prev {
+	left: 10px;
+}
+
+.carousel-control-next {
+	right: 10px;
+}
+
+/* Keep consistent height for carousel items */
+.carousel-item {
+	height: 350px;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.carousel-item.active {
+	display: flex;
+}
+
+.modal .carousel-item {
+	height: 70vh;
+}
+
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
