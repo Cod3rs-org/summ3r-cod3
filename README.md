@@ -1,57 +1,92 @@
 # Summ3r Cod3
 
-A brutalist-style website built with Astro.js that displays coding projects organized by year.
+A showcase of summer coding projects built during July-August. Build whatever you want this summer, win cool merch if people vote for your project!
 
-![Summ3r Cod3 Screenshot](https://via.placeholder.com/800x400?text=Summ3r+Cod3+Screenshot)
+## How to Contribute
 
-## 🎨 Design
+### Adding Your Project
 
-This project features a brutalist web design with a minimalist color scheme:
+1. **Fork this repository**
+   - Click the "Fork" button at the top right of this repository
 
-- Primary color: #212121 (60% - Dark gray/almost black)
-- Secondary color: #FFFFFF (30% - White)
-- Accent color: #755AFB (10% - Purple)
+2. **Clone your fork**
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/summ3r-cod3.git
+   cd summ3r-cod3
+   ```
 
-The design emphasizes raw, functional aesthetics with bold typography, high contrast, and geometric shapes.
+3. **Create a new project file**
+   - Navigate to the appropriate year folder: `src/content/projects/YEAR/`
+   - If the current year folder doesn't exist, you can create it
+   - Create a new markdown file with a unique name (e.g., `your-project-name.md`)
 
-## 📋 Features
+4. **Add your project details**
+   - Use the following template for your markdown file:
 
-- Display coding projects organized by year
-- Responsive grid layout for project cards
-- Brutalist styling with the specified color scheme
-- Technology tags for each project
-- Mobile-friendly design
+   ```markdown
+   ---
+   title: "Your Project Title"
+   description: "A brief description of your project (1-2 sentences)"
+   technologies: ["Tech1", "Tech2", "Tech3"]
+   author: "Your Name"
+   ---
 
-## 🚀 Project Structure
+   # Your Project Title
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro  # Main page with project listing
-└── package.json
-```
+   A more detailed description of your project.
 
-The main implementation is in `src/pages/index.astro`, which includes:
+   ## Features
+   - Feature 1
+   - Feature 2
+   - Feature 3
 
-1. Project data organized by year in the frontmatter section
-2. HTML structure for displaying projects in a responsive grid
-3. CSS styling with brutalist design principles
+   ## Technologies Used
+   - Technology 1
+   - Technology 2
+   - Technology 3
+   ```
 
-## 🧞 Commands
+5. **Commit and push your changes**
+   ```bash
+   git add .
+   git commit -m "Add my project: PROJECT_NAME"
+   git push
+   ```
 
-All commands are run from the root of the project, from a terminal:
+6. **Create a Pull Request**
+   - Go to your fork on GitHub
+   - Click "New Pull Request"
+   - Select the main repository as the base repository
+   - Write a brief description of your project
+   - Submit the Pull Request
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Project Guidelines
 
-## 👀 Want to learn more?
+- Projects must be created during the July-August timeframe
+- Your project should be your own original work
+- Include accurate information about technologies used
+- Keep descriptions concise and informative
+- Make sure your markdown formatting is correct
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Running the Project Locally
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser**
+   - Navigate to `http://localhost:4321` (or the port shown in your terminal)
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contact
+
+If you have any questions, feel free to open an issue in this repository.

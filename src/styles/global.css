@@ -35,10 +35,18 @@ header {
 	margin: 0 auto;
 }
 .vertical-text {
-	writing-mode: vertical-lr; /* or vertical-rl */
+	writing-mode: vertical-rl;
 	text-orientation: mixed;
-	height: 200px; /* Set desired height */
+	height: 150px; /* Set desired height */
 	text-align: right;
+}
+
+.vertical-text-rl {
+	transform: rotate(180deg);
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+	height: 150px; /* Set desired height */
+	text-align: left;
 }
 
 
@@ -104,18 +112,21 @@ h2 {
 }
 
 footer {
-	margin-top: 4rem;
 	padding-top: 1rem;
 	border-top: 4px solid var(--accent-color);
 	text-align: center;
 	font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-	body {
-		padding: 1rem;
-	}
+.bg-grid {
+	background-size: 100px 100px;
+	z-index: -2;
+	background-image: url("../assets/bg-grid.png");
+	background-position-y: -9px;
+	mask-image: linear-gradient(to bottom, transparent, 10%, white, 90%, transparent);
+}
 
+@media (max-width: 768px) {
 	.projects-grid {
 		grid-template-columns: 1fr;
 	}
