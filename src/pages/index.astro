@@ -1,10 +1,70 @@
 ---
-
 import BaseLayout from "../layout/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getAllProjects } from "../utils/projects";
 
+// Get all projects
+const allProjects = await getAllProjects();
+
+// Group projects by year
+const projectsByYear = allProjects.reduce((acc, project) => {
+  const year = project.year;
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(project);
+  return acc;
+}, {} as Record<string, typeof allProjects>);
+
+// Sort years in descending order
+const sortedYears = Object.keys(projectsByYear).sort((a, b) => b.localeCompare(a));
 ---
 
-
 <BaseLayout>
-	<h1>Home Page</h1>
+  <main>
+    <section class="mb-5">
+      <div class="lr px-1 py-3">
+        <div class="px-1 py-3 mb-4">
+          <h2 class="mb-0">SUMMER PROJECTS</h2>
+          <p class="lead">Check out what people are building this summer!</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div>
+        {sortedYears.map(year => (
+            <div class="mb-5">
+              <div class="d-flex align-items-center mb-3">
+                <h3 class="border-bottom border-2 border-dark px-2">{year}</h3>
+              </div>
+              <div class="row m-0">
+                {projectsByYear[year].map(project => (
+                    <ProjectCard project={project} />
+                ))}
+              </div>
+            </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <div class="lr px-1 py-3">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="mb-3">Submit Your Project</h3>
+            <p class="text-white">Have you built something cool this summer? Add it to the Summ3r Cod3 showcase!</p>
+            <ol class="mb-4 text-white">
+              <li>Fork the <a href="https://github.com/Cod3rs-org/summ3r-cod3" target="_blank" class="text-light">Summ3r Cod3 repository</a></li>
+              <li>Create a folder for your project in <code class="bg-dark text-light">src/pages/projects/2025/your-project-name/</code></li>
+              <li>Add your project details and screenshots</li>
+              <li>Submit a pull request to the main repository</li>
+            </ol>
+            <div class="text-center mb-3">
+              <a href="https://github.com/Cod3rs-org/summ3r-cod3" target="_blank" class="btn btn-outline-light">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </BaseLayout>

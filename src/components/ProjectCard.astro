@@ -1,0 +1,73 @@
+---
+import type { ProjectPage } from '../utils/projects';
+import { getProjectImageUrl } from '../utils/projects';
+
+interface Props {
+  project: ProjectPage;
+}
+
+const { project } = Astro.props;
+const imageUrl = getProjectImageUrl(project);
+const isRemoteImage = imageUrl.startsWith('http');
+---
+
+<div class="col-md-6 col-lg-3 mb-4">
+  <a href={project.url} class="text-decoration-none text-white">
+    <div class="card h-100 project-card">
+      <div class="card-img-top project-image-container">
+        {isRemoteImage ? (
+          <img src={imageUrl} alt={project.frontmatter.title} class="project-image" />
+        ) : (
+          <img src={imageUrl} alt={project.frontmatter.title} class="project-image" />
+        )}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title text-white">{project.frontmatter.title}</h5>
+        <div class="small text-light opacity-75 mb-2">
+          By {project.frontmatter.author} • {new Date(project.frontmatter.pubDate).toLocaleDateString()}
+        </div>
+        <p class="card-text text-light">{project.frontmatter.description}</p>
+      </div>
+      <div class="card-footer d-flex justify-content-between align-items-center">
+        <span class="badge bg-secondary">{project.year}</span>
+        <span class="btn btn-sm btn-outline-light">View Details</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+<style>
+  .project-card {
+    background-color: #2d2d2d;
+    border: 2px solid #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-color, #755AFB);
+  }
+
+  .project-image-container {
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 2px solid #fff;
+  }
+
+  .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover .project-image {
+    transform: scale(1.05);
+  }
+
+  .card-body, .card-footer {
+    background-color: #2d2d2d;
+  }
+</style>

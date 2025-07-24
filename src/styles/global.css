@@ -64,6 +64,49 @@ body {
 	right: 10px;
 }
 
+/* Project card styling */
+.project-card {
+    border: 2px solid white;
+    box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: #2d2d2d;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.25);
+    border-color: var(--accent-color, #755AFB);
+}
+
+.project-image-container {
+    border-bottom: 2px solid black;
+}
+
+/* Brutalist design elements */
+.bg-grid {
+    background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+}
+
+/* Gallery styling */
+.gallery-img {
+    max-height: 500px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .large {
+        font-size: 2rem;
+    }
+
+    .project-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
 /* Keep consistent height for carousel items */
 .carousel-item {
 	height: 350px;
