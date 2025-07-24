@@ -4,8 +4,29 @@ const { frontmatter } = Astro.props;
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import '../styles/global.css';
+import { Image } from 'astro:assets';
 
 const pageTitle = "Project";
+
+// Format date for display
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+};
+
+// Default project stats
+const defaultStats = [
+  { label: "Started", value: formatDate(frontmatter.pubDate) },
+  { label: "Team Size", value: frontmatter.teamSize || '1 developer' },
+  { label: "Status", value: frontmatter.status || 'Active Development' },
+  { label: "Last Update", value: frontmatter.lastUpdate ? formatDate(frontmatter.lastUpdate) : formatDate(new Date()) }
+];
+
+// Use custom project stats if provided, otherwise use defaults
+const projectStats = frontmatter.projectStats || defaultStats;
+
+// Check if project stats should be displayed
+const showProjectStats = frontmatter.hideProjectStats !== true;
 ---
 
 <html lang="en">
@@ -23,9 +44,35 @@ const pageTitle = "Project";
 </div>
 <header>
     <section>
-        <div class="lr px-1 py-3">
-            <h1>{frontmatter.title}</h1>
-            <p>Written by <a class="text-decoration-none" style="color: var(--accent-color)" href={frontmatter.github_user}>{frontmatter.author}</a></p>
+        <div class="lr">
+            <div class="px-2 py-3 d-flex flex-row gap-3">
+                <div class="col">
+                    <h1>{frontmatter.title}</h1>
+                    <p>Written by <a class="text-decoration-none" style="color: var(--accent-color)" href={frontmatter.github_user}>{frontmatter.author}</a></p>
+                </div>
+                <div class="col-auto pe-3 d-flex justify-content-end align-items-center">
+                    <a class="text-decoration-none text-white" href={frontmatter.repository_link}>
+                        <i class="bi bi-github" style="font-size: 4rem"></i>
+                    </a>
+                </div>
+            </div>
+
+            <section class="row m-0">
+                {showProjectStats && (
+                    <div class="col-md-4 border-system be py-3 px-2">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                {projectStats.map(stat => (
+                                        <li><strong set:html={stat.label} />: {stat.value}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                )}
+                <div class={`col-md-${showProjectStats ? '8' : '12'} d-flex align-items-center`}>
+                    <p class="mb-0">{frontmatter.description}</p>
+                </div>
+            </section>
         </div>
     </section>
 </header>
@@ -43,9 +90,8 @@ const pageTitle = "Project";
             </div>
             <div class="col-sm d-flex justify-content-end align-items-end">
                 <p class="vertical-text-rl">
-                    ...
+                    Project by {frontmatter.author}
                 </p>
-
             </div>
         </div>
     </div>

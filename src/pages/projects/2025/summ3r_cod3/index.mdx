@@ -1,0 +1,81 @@
+---
+layout: ../../../../layout/ProjectPostLayout.astro
+title: 'Summ3r Cod3 Website'
+pubDate: 2022-07-01
+description: 'A brutalist web design project built with Astro, showcasing our coding projects, team members, and community initiatives.'
+author: 'Matej Ma2ur'
+github_user: 'https://github.com/MatejMa2ur'
+repository_link: 'https://github.com/Cod3rs-org/summ3r-cod3'
+statsTitle: 'Website Stats'
+projectStats: [
+    { label: '<i class="bi bi-clock"></i> Started', value: 'July 2025' },
+    { label: '<i class="bi bi-arrow-clockwise"></i> Status', value: 'Active Development' },
+    { label: '<i class="bi bi-file-check"></i> License', value: 'Unlicense' },
+]
+image:
+    url: 'https://docs.astro.build/assets/rose.webp'
+    alt: 'The Astro logo on a dark background with a pink glow.'
+---
+
+import {Image} from 'astro:assets';
+import myImage from './img.png';
+
+<section>
+    <div className={"lr p-3"}>
+        <h2 className={"m-0"}>Project Overview</h2>
+    </div>
+    <section className="row m-0">
+        <div className="col-sm be">
+            <p>
+                The Summ3r Cod3 Website is a brutalist web design project built with Astro.
+                This Page showcase projects created during summer 2025!
+            </p>
+            <h3>Key Features</h3>
+            <ul>
+                <li>Responsive brutalist design</li>
+                <li>Fast performance with Astro</li>
+                <li>Project portfolio</li>
+            </ul>
+            <h3>Technologies Used</h3>
+            <div className="d-flex flex-wrap gap-2 mb-4">
+                <span className="badge bg-secondary">Astro 5.12.3</span>
+                <span className="badge bg-secondary">TypeScript</span>
+                <span className="badge bg-secondary">Bootstrap 5.3.7</span>
+                <span className="badge bg-secondary">Node.js</span>
+            </div>
+        </div>
+        <div className="col-sm bg-grid py-4">
+            <Image src={myImage} class="img-fluid img-style" alt="Your image description"/>
+        </div>
+    </section>
+</section>
+
+<section>
+    <div className="lr px-1 py-3">
+        <div className="row">
+            <div className="col-md-12">
+                <h3>Technical Architecture</h3>
+                <div className="row">
+                    <div className="col-md-6">
+                        <h5 className="text-uppercase">Frontend</h5>
+                        <ul>
+                            <li>Astro 5.12.3 for static site generation</li>
+                            <li>TypeScript for type safety</li>
+                            <li>Bootstrap 5.3.7 for responsive layouts</li>
+                            <li>Custom CSS for brutalist styling</li>
+                        </ul>
+                    </div>
+                    <div className="col-md-6">
+                        <h5 className="text-uppercase">Content Management</h5>
+                        <ul>
+                            <li>Markdown files with frontmatter</li>
+                            <li>Gray-matter for metadata parsing</li>
+                            <li>Git-based content workflow</li>
+                            <li>Optimized asset pipeline</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -9,9 +9,20 @@ body {
 	font-family: monospace;
 	background-color: var(--primary-color);
 	color: var(--secondary-color);
-	width: 100vw;
+	width: 100%;
 	line-height: 1.6;
 }
+
+.be {
+	border-right: 2px solid var(--border-color);
+}
+
+.img-style{
+	border-radius: 15px;
+	box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+	transition: box-shadow 0.3s ease;
+}
+
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
@@ -49,12 +60,6 @@ header {
 	text-align: left;
 }
 
-
-
-header {
-	margin-bottom: 3rem;
-}
-
 h1 {
 	font-size: 3rem;
 	letter-spacing: 2px;
@@ -66,6 +71,29 @@ h2 {
 	border-left: 8px solid var(--accent-color);
 	padding-left: 1rem;
 }
+h3 {
+	margin: 2rem 0 1rem;
+	border-left: 4px solid var(--accent-color);
+	padding-left: 1rem;
+}
+
+h4, h5 {
+	margin: 2rem 0 1rem;
+	position: relative;
+	padding-left: 1rem;
+	padding-bottom: 0.5rem;
+}
+
+h4::after, h5::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 1rem;  /* Match the padding-left */
+	width: 20%;  /* This makes it half width */
+	height: 2px;
+	background-color: var(--accent-color);
+}
+
 
 .year-section {
 	margin-bottom: 4rem;
