@@ -1,0 +1,45 @@
+---
+layout: ../../../../layout/ProjectPostLayout.astro
+title: 'Layerhub'
+pubDate: 2025-05-25
+description: 'Map displaying app, showcasing our coding projects, team members, and community initiatives.'
+author: 'Matej Ma2ur'
+github_user: 'https://github.com/MatejMa2ur'
+repository_link: 'https://github.com/Yet-another-solution/LayerHub'
+statsTitle: 'Website Stats'
+projectStats: [
+    { label: '<i class="bi bi-clock"></i> Started', value: 'May 2025' },
+    { label: '<i class="bi bi-arrow-clockwise"></i> Status', value: 'Active Development' },
+    { label: '<i class="bi bi-file-check"></i> License', value: 'MIT' },
+]
+image:
+    url: 'https://docs.astro.build/assets/rose.webp'
+    alt: 'The Astro logo on a dark background with a pink glow.'
+gallery: [
+    { url: '/projects/2025/layerhub/img.png', alt: 'Screenshot of Layerhub website' },
+]
+---
+
+<section>
+    <div className={"lr p-3"}>
+        <h2 className={"m-0"}>Project Overview</h2>
+    </div>
+    <section className="row m-0">
+        <div className="col-sm be">
+            <h3>Key Features</h3>
+            <ul>
+                <li>Using library Community.Blazor.MapLibre</li>
+                <li>Blazor WASM app</li>
+            </ul>
+            <h3>Technologies Used</h3>
+            <div className="d-flex flex-wrap gap-2 mb-4">
+                <span className="badge bg-secondary">Blazor WASM</span>
+                <span className="badge bg-secondary">Maplibre GL JS</span>
+                <span className="badge bg-secondary">Bootstrap</span>
+            </div>
+        </div>
+        <div className="col-sm bg-grid py-4">
+            <img src="/projects/2025/layerhub/img.png" class="img-fluid img-style" alt="Your image description"/>
+        </div>
+    </section>
+</section>
