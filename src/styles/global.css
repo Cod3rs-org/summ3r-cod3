@@ -5,6 +5,12 @@
 	--border-color: hsl(0, 0%, 18%);
 }
 
+* {
+	-webkit-user-select: none;  /* Safari */
+	-ms-user-select: none;      /* IE 10 and IE 11 */
+	user-select: none;          /* Standard syntax */
+}
+
 body {
 	font-family: monospace;
 	background-color: var(--primary-color);
